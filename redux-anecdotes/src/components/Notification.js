@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const Notification = () => {
 
   const notification = useSelector(({ notification }) => {
     return notification
   })
-  const dispatch = useDispatch()
 
   const style = {
     border: 'solid',
