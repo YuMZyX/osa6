@@ -11,6 +11,10 @@ const nReducer = (state, action) => {
       return `You voted: ${action.payload}`
     case 'CREATE':
       return `Added anecdote: ${action.payload}`
+    case 'REMOVE':
+      return action.payload
+    case 'ERROR':
+      return action.payload
     default:
       return state
   }
@@ -38,6 +42,9 @@ const App = () => {
   const handleVote = (anecdote) => {
     updateAnecdoteMutation.mutate({...anecdote, votes: anecdote.votes + 1})
     notificationDispatch({ type: 'VOTE', payload: anecdote.content })
+    setTimeout(() => {
+      notificationDispatch({ type: 'REMOVE', payload: '' })
+    }, 5000)
   }
 
   if (result.isLoading) {
